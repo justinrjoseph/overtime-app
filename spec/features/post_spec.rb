@@ -30,6 +30,7 @@ describe 'navigation' do
       
       click_on 'Save'
       
+      expect(page).to have_content 'Post created successfully.'
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Some rationale.'
     end

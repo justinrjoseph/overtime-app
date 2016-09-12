@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  
   def index
     
   end
@@ -11,20 +13,22 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: 'Post created successfully.'
     else
-      flash[:error] = 'There was a problem creating your post.'
-      render :new
+      render :new, error: 'There was a problem creating your post.'
     end
   end
   
   def show
-    @post = Post.find(params[:id])
   end
   
   private
   
     def post_params
       params.require(:post).permit(:date, :rationale)
+    end
+    
+    def set_post
+      @post = Post.find(params[:id])
     end
 end

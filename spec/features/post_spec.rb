@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe 'navigation' do
+  before do
+    @user = User.create(email: 'test@example.com', password: 'asdf1234', password_confirmation: 'asdf1234', first_name: 'John', last_name: 'Doe')
+    login_as(@user, scope: :user)
+  end
+  
   describe 'index' do
     before do
       visit posts_path
@@ -33,6 +38,23 @@ describe 'navigation' do
       expect(page).to have_content 'Post created successfully.'
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Some rationale.'
+    end
+    
+    it 'will have a user associated with it' do
+      fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: 'Rationale for post with user associated.'
+      
+      click_on 'Save'
+      
+      post = Post.last
+      
+      expect(post.user).to eq @user
+      expect(@user.posts.last.date).to eq Date.today
+      expect(@user.posts.last.rationale).to eq 'Rationale for post with user associated.'
+      
+      expect(page).to have_content 'Post created successfully.'
+      expect(page).to have_content Date.today.strftime('%m/%d/%Y')
+      expect(page).to have_content 'Rationale for post with user associated.'
     end
   end
 end

@@ -1,0 +1,7 @@
+<%= form_for @post do |f| %>
+  <%= f.label 'Date' %>
+  <%= f.date_field :date %>
+  <%= f.label 'Rationale' %>
+  <%= f.text_area :rationale %>
+  <%= f.submit 'Save' %>
+<% end %>

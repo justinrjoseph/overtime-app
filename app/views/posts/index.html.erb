@@ -11,13 +11,6 @@
   </thead>
   
   <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.id %></td>
-        <td><%= post.date.strftime('%m/%d/%Y') %></td>
-        <td><%= post.user.first_name %> <%= post.user.last_name %></td>
-        <td><%= truncate post.rationale  %></td>
-      </tr>
-    <% end %>
+    <%= render @posts %>
   </tbody>
 </table>

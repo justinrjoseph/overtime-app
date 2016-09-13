@@ -8,8 +8,8 @@ describe 'navigation' do
   
   describe 'index' do
     before do
-      Post.create(date: Date.today, rationale: 'Post 1.')
-      Post.create(date: Date.today, rationale: 'Post 2.')
+      Post.create(date: Date.today, rationale: 'Post 1.', user: @user)
+      Post.create(date: Date.today, rationale: 'Post 2.', user: @user)
       
       visit posts_path
     end

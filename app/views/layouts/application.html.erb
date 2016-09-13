@@ -13,7 +13,14 @@
       <%= content_tag :div, message, class: "alert alert-#{type}" %>
     <% end %>
     
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'shared/nav' %>
+          <%= yield %>    
+        </div>
+      </div>
+    </div>
   
   </body>
 </html>

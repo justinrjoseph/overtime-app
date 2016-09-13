@@ -3,8 +3,8 @@
 </div>
 
 <ul class="custom-nav nav nav-tabs">
-  <li class="active"><%= link_to 'Home', root_path %></li>
-  <li><%= link_to 'Time Entries', posts_path %></li>
+  <li class="<%= active?(root_path) %>"><%= link_to 'Home', root_path %></li>
+  <li class="<%= active?(posts_path) %>"><%= link_to 'Time Entries', posts_path %></li>
   <li class="dropdown pull-right">
     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account <strong class="caret"></strong></a>
     <ul class="dropdown-menu">

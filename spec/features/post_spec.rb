@@ -8,6 +8,9 @@ describe 'navigation' do
   
   describe 'index' do
     before do
+      Post.create(date: Date.today, rationale: 'Post 1.')
+      Post.create(date: Date.today, rationale: 'Post 2.')
+      
       visit posts_path
     end
     
@@ -17,6 +20,10 @@ describe 'navigation' do
     
     it 'has a title of Posts' do
       expect(page).to have_content 'Posts'
+    end
+    
+    it 'has a list of Posts' do
+      expect(page).to have_content(/Post 1|Post 2/)
     end
   end
   

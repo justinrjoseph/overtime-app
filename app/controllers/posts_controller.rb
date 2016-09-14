@@ -22,6 +22,17 @@ class PostsController < ApplicationController
   def show
   end
   
+  def edit
+  end
+  
+  def update
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Post updated successfully.'
+    else
+      render :edit, error: 'There was a problem updating the post.'
+    end
+  end
+  
   private
   
     def post_params

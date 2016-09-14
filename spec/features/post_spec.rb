@@ -2,15 +2,14 @@ require 'rails_helper'
 
 describe 'navigation' do
   before do
-    @user = User.create(email: 'test@example.com', password: 'asdf1234', password_confirmation: 'asdf1234', first_name: 'John', last_name: 'Doe')
+    @user = FactoryGirl.create(:user)
     login_as(@user, scope: :user)
   end
   
   describe 'index' do
     before do
-      Post.create(date: Date.today, rationale: 'Post 1.', user: @user)
-      Post.create(date: Date.today, rationale: 'Post 2.', user: @user)
-      
+      FactoryGirl.create(:post)
+      FactoryGirl.create(:post_2)
       visit posts_path
     end
     
@@ -23,7 +22,7 @@ describe 'navigation' do
     end
     
     it 'has a list of Posts' do
-      expect(page).to have_content(/Post 1|Post 2/)
+      expect(page).to have_content(/Some rationale.|Different rationale./)
     end
   end
   

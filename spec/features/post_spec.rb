@@ -26,6 +26,14 @@ describe 'navigation' do
     end
   end
   
+  describe 'new' do
+    it 'has a link on the home page' do
+      visit root_path
+      click_link 'New Time Entry'
+      expect(page.status_code).to eq 200
+    end
+  end
+  
   describe 'creation' do
     before do
       visit new_post_path

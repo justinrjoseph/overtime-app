@@ -101,4 +101,17 @@ describe 'navigation' do
       expect(page).to have_content 'Edited rationale.'
     end
   end
+  
+  describe 'delete' do
+    it 'can be deleted' do
+      post = FactoryGirl.create(:post)
+      visit posts_path
+      
+      click_link "delete_#{post.id}"
+      expect(page.status_code).to eq 200
+      
+      expect(page).to have_content "'#{post.rationale}' was deleted."
+      expect(page).not_to have_content post.id
+    end
+  end
 end

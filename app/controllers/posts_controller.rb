@@ -33,6 +33,14 @@ class PostsController < ApplicationController
     end
   end
   
+  def destroy
+    if @post.delete
+      redirect_to posts_path, notice: "'#{@post.rationale}' was deleted."
+    else
+      redirect_to posts_path, error: "There was a problem deleting #{@post.rationale}"
+    end
+  end
+  
   private
   
     def post_params

@@ -1,5 +1,11 @@
 <div class="col-sm-6 col-sm-offset-3">
   <%= form_for @post, class: 'form-horizontal' do |f| %>
+    <% if @post.errors.any? %>
+      <% @post.errors.full_messages.each do |message| %>
+        <%= js add_gritter(message, sticky: false, image: :notice) %>
+      <% end %>
+    <% end %>
+  
     <div class="form-group">
       <%= f.label 'Date', class: 'col-sm-2 control-label' %>
       <%= f.date_field :date, class: 'form-control' %>  

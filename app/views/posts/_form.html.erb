@@ -1,23 +1,25 @@
-<div class="col-sm-6 col-sm-offset-3">
-  <%= form_for @post, class: 'form-horizontal' do |f| %>
-    <% if @post.errors.any? %>
-      <% @post.errors.full_messages.each do |message| %>
-        <%= js add_gritter(message, sticky: false, image: :notice) %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= form_for @post, class: 'form-horizontal' do |f| %>
+      <% if @post.errors.any? %>
+        <% @post.errors.full_messages.each do |message| %>
+          <%= js add_gritter(message, sticky: false, image: :notice) %>
+        <% end %>
       <% end %>
+    
+      <div class="form-group">
+        <%= f.label 'Date', class: 'col-sm-2 control-label' %>
+        <%= f.date_field :date, class: 'form-control' %>  
+      </div>
+      
+      <div class="form-group">
+        <%= f.label 'Rationale', class: 'col-sm-2 control-label' %>
+        <%= f.text_area :rationale, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      </div>
     <% end %>
-  
-    <div class="form-group">
-      <%= f.label 'Date', class: 'col-sm-2 control-label' %>
-      <%= f.date_field :date, class: 'form-control' %>  
-    </div>
-    
-    <div class="form-group">
-      <%= f.label 'Rationale', class: 'col-sm-2 control-label' %>
-      <%= f.text_area :rationale, class: 'form-control' %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.submit 'Save', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  </div>
 </div>

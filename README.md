@@ -16,3 +16,4 @@
 
 ## UI:
 - x Bootstrap -> formatting
+- Font Awesome icons

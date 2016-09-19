@@ -49,7 +49,6 @@ describe 'navigation' do
       
       click_on 'Save'
       
-      expect(page).to have_content 'Post created successfully.'
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Some rationale.'
     end
@@ -66,7 +65,6 @@ describe 'navigation' do
       expect(@user.posts.last.date).to eq Date.today
       expect(@user.posts.last.rationale).to eq 'Rationale for post with user associated.'
       
-      expect(page).to have_content 'Post created successfully.'
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Rationale for post with user associated.'
     end
@@ -96,7 +94,6 @@ describe 'navigation' do
       expect(@post.date).to eq Date.today
       expect(@post.rationale).to eq 'Edited rationale.'
       
-      expect(page).to have_content 'Post updated successfully.'
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Edited rationale.'
     end
@@ -110,7 +107,6 @@ describe 'navigation' do
       click_link "delete_#{post.id}"
       expect(page.status_code).to eq 200
       
-      expect(page).to have_content "'#{post.rationale}' was deleted."
       expect(page).not_to have_content post.id
     end
   end

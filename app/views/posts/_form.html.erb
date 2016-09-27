@@ -18,6 +18,17 @@
       </div>
       
       <div class="form-group">
+        <%= f.radio_button :status, 'submitted' %>
+        <%= f.label :status, 'Submitted' %>
+        
+        <%= f.radio_button :status, 'approved' %>
+        <%= f.label :status, 'Approved' %>
+        
+        <%= f.radio_button :status, 'rejected' %>
+        <%= f.label :status, 'Rejected' %>
+      </div>
+      
+      <div class="form-group">
         <%= f.submit 'Save', class: 'btn btn-primary' %>
       </div>
     <% end %>

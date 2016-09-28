@@ -18,3 +18,8 @@
 ## UI:
 - x Bootstrap -> formatting
 - Font Awesome icons
+- 
+
+## Refactor TODOS:
+- Refactor user association for post_spec test
+- Refactor posts/_form for admin user with status

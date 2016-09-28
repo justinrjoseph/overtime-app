@@ -2,16 +2,20 @@
   <h1>Overtime Tracker</h1>
 </div>
 
-<ul class="custom-nav nav nav-tabs">
-  <li class="<%= active?(root_path) %>"><%= link_to 'Home', root_path %></li>
-  <li class="<%= active?(posts_path) %>"><%= link_to 'Time Entries', posts_path %></li>
-  <li class="<%= active?(new_post_path) %>"><%= link_to 'New Time Entry', new_post_path %></li>
-  <li class="dropdown pull-right">
-    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account <strong class="caret"></strong></a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'TODO: Admin Dashboard', '#' %></li>
-      <li class="divider"></li>
-      <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-    </ul>
-  </li>
-</ul>
+<% if current_user %>
+  <ul class="custom-nav nav nav-tabs">
+    <li class="<%= active?(root_path) %>"><%= link_to 'Home', root_path %></li>
+    <li class="<%= active?(posts_path) %>"><%= link_to 'Time Entries', posts_path %></li>
+    <li class="<%= active?(new_post_path) %>"><%= link_to 'New Time Entry', new_post_path %></li>
+    <li class="dropdown pull-right">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account <strong class="caret"></strong></a>
+      <ul class="dropdown-menu">
+        <% if current_user.type.eql?('AdminUser') %>
+          <li><%= link_to 'Admin Dashboard', admin_root_path %></li>
+          <li class="divider"></li>
+        <% end %>
+        <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </li>
+  </ul>
+<% end %>

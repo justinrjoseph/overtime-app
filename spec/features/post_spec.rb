@@ -8,8 +8,8 @@ describe 'navigation' do
   
   describe 'index' do
     before do
-      FactoryGirl.create(:post)
-      FactoryGirl.create(:post_2)
+      FactoryGirl.create(:post, user: @user)
+      FactoryGirl.create(:post_2, user: @user)
       visit posts_path
     end
     
@@ -23,6 +23,22 @@ describe 'navigation' do
     
     it 'has a list of Posts' do
       expect(page).to have_content(/Some rationale.|Different rationale./)
+    end
+    
+    it 'is scoped so only creators can see their posts' do
+      other_user = User.create(
+        first_name: 'Test',
+        last_name: 'User',
+        email: 'test_user@example.com',
+        password: 'asdf1234',
+        password_confirmation: 'asdf1234'
+      )
+      
+      Post.create(date: Date.today, rationale: 'should not be seen', user: other_user)
+      
+      visit posts_path
+      
+      expect(page).to_not have_content 'should not be seen'
     end
   end
   
@@ -107,7 +123,7 @@ describe 'navigation' do
   
   describe 'delete' do
     it 'can be deleted' do
-      post = FactoryGirl.create(:post)
+      post = FactoryGirl.create(:post, user: @user)
       visit posts_path
       
       click_link "delete_#{post.id}"

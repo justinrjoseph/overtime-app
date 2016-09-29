@@ -23,3 +23,4 @@
 ## Refactor TODOS:
 - Refactor user association for post_spec test
 - Refactor posts/_form for admin user with status
+- Fix post_spec:80 to use factories

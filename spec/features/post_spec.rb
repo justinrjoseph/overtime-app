@@ -72,30 +72,36 @@ describe 'navigation' do
   
   describe 'edit' do
     before do
-      @post = FactoryGirl.create(:post)
-    end
-    
-    it 'can be reached by clicking Edit on index page' do
-      visit posts_path
-      
-      click_link "edit_#{@post.id}"
-      expect(page.status_code).to eq 200
+      edit_user = User.create(first_name: 'Edit', last_name: 'User', email: 'edit_user@example.com', password: 'asdf1234', password_confirmation: 'asdf1234')
+      login_as(edit_user, scope: :user)
+      @edit_post = Post.create(date: Date.today, rationale: 'asdf', user: edit_user)
     end
     
     it 'can be edited' do
-      visit edit_post_path(@post)
+      visit edit_post_path(@edit_post)
       
       fill_in 'post[rationale]', with: 'Edited rationale.'
       
       click_on 'Save'
       
-      @post.reload
+      @edit_post.reload
       
-      expect(@post.date).to eq Date.today
-      expect(@post.rationale).to eq 'Edited rationale.'
+      expect(@edit_post.date).to eq Date.today
+      expect(@edit_post.rationale).to eq 'Edited rationale.'
       
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Edited rationale.'
+    end
+    
+    it 'can not be edited by a non-authorized user' do
+      logout(:user)
+      
+      non_authorized_user = FactoryGirl.create(:non_authorized_user)
+      login_as non_authorized_user, scope: :user
+      
+      visit edit_post_path(@edit_post)
+      
+      expect(current_path).to eq root_path
     end
   end
   

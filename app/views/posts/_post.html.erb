@@ -4,6 +4,6 @@
   <td><%= post.user.full_name %></td>
   <td><%= truncate post.rationale  %></td>
   <td><%= status_label post.status.upcase %></td>
-  <td><%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" %></td>
+  <td><%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" if policy(post).update? %></td>
   <td><%= link_to 'Delete', post, id: "delete_#{post.id}", method: :delete, data: { confirm: "Are you sure you want to delete '#{post.rationale}'?" } %></td>
 </tr>

@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   
   validates :date, presence: true
   validates :rationale, presence: true
+  
+  scope :those_by, ->(user) { where(user_id: user.id) }
 end

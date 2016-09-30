@@ -1,15 +1,19 @@
 require 'rails_helper'
 
 describe 'navigation' do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:post) do
+    Post.create(date: Date.today, rationale: 'Rationale.', user: user)
+  end
+  
   before do
-    @user = FactoryGirl.create(:user)
-    login_as(@user, scope: :user)
+    login_as(user, scope: :user)
   end
   
   describe 'index' do
     before do
-      FactoryGirl.create(:post, user: @user)
-      FactoryGirl.create(:post_2, user: @user)
+      FactoryGirl.create(:post, user: user)
+      FactoryGirl.create(:post_2, user: user)
       visit posts_path
     end
     
@@ -77,9 +81,9 @@ describe 'navigation' do
       
       post = Post.last
       
-      expect(post.user).to eq @user
-      expect(@user.posts.last.date).to eq Date.today
-      expect(@user.posts.last.rationale).to eq 'Rationale for post with user associated.'
+      expect(post.user).to eq user
+      expect(user.posts.last.date).to eq Date.today
+      expect(user.posts.last.rationale).to eq 'Rationale for post with user associated.'
       
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Rationale for post with user associated.'
@@ -87,23 +91,17 @@ describe 'navigation' do
   end
   
   describe 'edit' do
-    before do
-      edit_user = User.create(first_name: 'Edit', last_name: 'User', email: 'edit_user@example.com', password: 'asdf1234', password_confirmation: 'asdf1234')
-      login_as(edit_user, scope: :user)
-      @edit_post = Post.create(date: Date.today, rationale: 'asdf', user: edit_user)
-    end
-    
     it 'can be edited' do
-      visit edit_post_path(@edit_post)
+      visit edit_post_path(post)
       
       fill_in 'post[rationale]', with: 'Edited rationale.'
       
       click_on 'Save'
       
-      @edit_post.reload
+      post.reload
       
-      expect(@edit_post.date).to eq Date.today
-      expect(@edit_post.rationale).to eq 'Edited rationale.'
+      expect(post.date).to eq Date.today
+      expect(post.rationale).to eq 'Edited rationale.'
       
       expect(page).to have_content Date.today.strftime('%m/%d/%Y')
       expect(page).to have_content 'Edited rationale.'
@@ -115,7 +113,7 @@ describe 'navigation' do
       non_authorized_user = FactoryGirl.create(:non_authorized_user)
       login_as non_authorized_user, scope: :user
       
-      visit edit_post_path(@edit_post)
+      visit edit_post_path(post)
       
       expect(current_path).to eq root_path
     end
@@ -123,13 +121,19 @@ describe 'navigation' do
   
   describe 'delete' do
     it 'can be deleted' do
-      post = FactoryGirl.create(:post, user: @user)
+      logout(:user)
+      
+      user = FactoryGirl.create(:user)
+      login_as user, scope: :user
+      
+      post_to_delete = Post.create(date: Date.today, rationale: 'To be deleted.', user: user)
+      
       visit posts_path
       
-      click_link "delete_#{post.id}"
-      expect(page.status_code).to eq 200
+      click_link "delete_#{post_to_delete.id}"
       
-      expect(page).not_to have_content post.id
+      expect(page.status_code).to eq 200
+      expect(page).not_to have_content post_to_delete.id
     end
   end
 end

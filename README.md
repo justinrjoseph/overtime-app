@@ -18,9 +18,6 @@
 ## UI:
 - x Bootstrap -> formatting
 - Font Awesome icons
-- 
 
 ## Refactor TODOS:
-- User associations for post_spec tests
 - posts/_form for admin user with status
-- Fix post_spec:80 to use factories

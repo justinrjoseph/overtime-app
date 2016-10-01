@@ -20,5 +20,5 @@
 - x Bootstrap -> formatting
 - x Glyphicons
 
-## Refactor TODOS:
-- x posts/_form for admin user with status
+## TODOS:
+- Validate user phone_number

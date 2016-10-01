@@ -20,7 +20,12 @@ describe 'AuditLog feature' do
     end
     
     it 'can not be accessed by non-admins' do
+      logout(:user)
+      user = FactoryGirl.create(:user)
+      login_as user, scope: :user
       
+      visit audit_logs_path
+      expect(current_path).to eq root_path
     end
   end
 end

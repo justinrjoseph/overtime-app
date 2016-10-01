@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'navigation' do
   let(:user) { FactoryGirl.create(:user) }
   let(:post) do
-    Post.create(date: Date.today, rationale: 'Rationale.', user: user)
+    Post.create(date: Date.today, rationale: 'Rationale.', user: user, overtime_request: 3.5)
   end
   
   before do
@@ -38,7 +38,7 @@ describe 'navigation' do
         password_confirmation: 'asdf1234'
       )
       
-      Post.create(date: Date.today, rationale: 'should not be seen', user: other_user)
+      Post.create(date: Date.today, rationale: 'should not be seen', user: other_user, overtime_request: 3.5)
       
       visit posts_path
       
@@ -66,16 +66,15 @@ describe 'navigation' do
     it 'can be created using new form' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Some rationale.'
+      fill_in 'post[overtime_request]', with: 1.5
       
-      click_on 'Save'
-      
-      expect(page).to have_content Date.today.strftime('%m/%d/%Y')
-      expect(page).to have_content 'Some rationale.'
+      expect { click_on 'Save' }.to change(Post, :count).by(1)
     end
     
     it 'will have a user associated with it' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Rationale for post with user associated.'
+      fill_in 'post[overtime_request]', with: 4.5
       
       click_on 'Save'
       
@@ -126,7 +125,7 @@ describe 'navigation' do
       user = FactoryGirl.create(:user)
       login_as user, scope: :user
       
-      post_to_delete = Post.create(date: Date.today, rationale: 'To be deleted.', user: user)
+      post_to_delete = Post.create(date: Date.today, rationale: 'To be deleted.', user: user, overtime_request: 3.5)
       
       visit posts_path
       

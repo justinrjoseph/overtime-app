@@ -1,1 +1,19 @@
-<%= render @audit_logs %>
+<h1>Audit Logs</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Employee</th>
+      <th>Week Of</th>
+      <th>Confirmed On</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <%= render @audit_logs %>
+  </tbody>
+</table>

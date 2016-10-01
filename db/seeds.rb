@@ -32,7 +32,7 @@ puts "Two users, and one AdminUser created."
 end
 
 100.times do |audit_log|
-  AuditLog.create!(user: User.last, status: 0, start_date: ( Date.today - 6.days ))
+  AuditLog.create!(user: @user, status: 0, start_date: ( Date.today - 6.days ))
 end
 
 puts "100 posts and audit logs have been created."

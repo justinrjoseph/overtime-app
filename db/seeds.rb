@@ -31,4 +31,8 @@ puts "Two users, and one AdminUser created."
   Post.create!(date: Date.today, rationale: "Rationale for post #{post + 1}.", user: @user, overtime_request: 2.5)
 end
 
-puts "100 posts have been created."
+100.times do |audit_log|
+  AuditLog.create!(user: User.last, status: 0, start_date: ( Date.today - 6.days ))
+end
+
+puts "100 posts and audit logs have been created."

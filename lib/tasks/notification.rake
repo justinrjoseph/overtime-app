@@ -8,5 +8,4 @@ namespace :notification do
     #   SmsTool.send(number: , message:)
     # end
   end
-
 end

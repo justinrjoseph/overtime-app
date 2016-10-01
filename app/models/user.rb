@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :posts
+  has_many :audit_logs
   
   REGEX_PHONE_NUMBER = /\A[0-9]*\Z/
   

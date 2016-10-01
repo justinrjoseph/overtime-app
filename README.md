@@ -21,4 +21,3 @@
 - x Glyphicons
 
 ## TODOS:
-- Validate user phone_number

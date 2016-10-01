@@ -1,2 +1,15 @@
-<%= @post.date.strftime('%m/%d/%Y') %>
-<%= @post.rationale %>
+<h2><%= @post.rationale %></h2>
+
+<hr>
+
+<div class="well">
+  <h3><span>Overtime Requested</span>: <%= @post.overtime_request %></h3>
+  
+  <h3><span>Employee</span>: <%= @post.user.full_name %></h3>
+  
+  <h3><span>Date</span>: <%= @post.date.strftime('%m/%d/%Y') %></h3>
+  
+  <h3><span>Stage of Approval</span>: <%= @post.status %></h3>
+</div>
+
+<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' if policy(@post).update? %>

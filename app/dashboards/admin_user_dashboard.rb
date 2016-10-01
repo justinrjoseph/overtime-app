@@ -15,7 +15,8 @@ class AdminUserDashboard < Administrate::BaseDashboard
     last_name: Field::String.with_options(searchable: false),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
-    type: Field::String.with_options(searchable: false)
+    type: Field::String.with_options(searchable: false),
+    phone_number: Field::String.with_options(searchable: false)
   }.freeze
 
   COLLECTION_ATTRIBUTES = [
@@ -35,6 +36,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :last_sign_in_ip,
     :first_name,
     :last_name,
+    :phone_number,
     :created_at,
     :updated_at,
     :type
@@ -45,6 +47,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :password,
     :first_name,
     :last_name,
+    :phone_number,
     :type
   ].freeze
 end

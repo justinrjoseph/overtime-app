@@ -35,7 +35,8 @@ describe 'navigation' do
         last_name: 'User',
         email: 'test_user@example.com',
         password: 'asdf1234',
-        password_confirmation: 'asdf1234'
+        password_confirmation: 'asdf1234',
+        phone_number: '5555555555'
       )
       
       Post.create(date: Date.today, rationale: 'should not be seen', user: other_user, overtime_request: 3.5)

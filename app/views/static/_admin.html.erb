@@ -4,4 +4,13 @@
     <hr>
     <%= render partial: 'pending_approval', locals: { pending_approvals: @pending_approvals } %>
   </div>
+  
+  <div class="pending-records row">
+    <h2>Confirmation Log</h2>
+    <hr>
+    <%= render partial: 'confirmation_log', locals: { recent_audit_items: @recent_audit_items } %>
+    <hr>
+    <div class="clearfix"></div>
+    <%= link_to 'View All', audit_logs_path, class: 'btn btn-primary' %>
+  </div>
 </div>

@@ -17,8 +17,17 @@
   margin: 15px;
   background-color: #1d3c91;
   color: white;
+  
+  &:hover {
+    background-color: #172b63;
+  }
 }
 
 .pending-details {
   font-weight: 900;
+}
+
+.approve-btn:hover,
+.review-btn:hover {
+  cursor: pointer;
 }

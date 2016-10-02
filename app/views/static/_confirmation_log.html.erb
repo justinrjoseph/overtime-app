@@ -1,0 +1,16 @@
+<% recent_audit_items.each do |recent_audit_item| %>
+  <div class="col-md-4">
+    <div class="record">
+      <h4><%= recent_audit_item.user.full_name %></h4>
+      <p>
+        <span class="pending-details">Week Of</span>: <%= recent_audit_item.start_date.strftime('%m/%d/%Y') %>
+      </p>
+      <p>
+        <span class="pending-details">Confirmed On</span>: <%= recent_audit_item.end_date || status_label('PENDING') %>
+      </p>
+      <p>
+        <span class="pending-details">Status</span>: <%= status_label(recent_audit_item.status.upcase) %>
+      </p>
+    </div>
+  </div>
+<% end %>

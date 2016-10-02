@@ -1,4 +1,6 @@
 class AuditLog < ActiveRecord::Base
+  enum status: { pending: 0, confirmed: 1 }
+  
   belongs_to :user
   
   validates :user, presence: true

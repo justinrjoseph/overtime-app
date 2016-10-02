@@ -1,0 +1,20 @@
+.pending-records,
+.record {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.pending-records {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #e3e3e3;
+}
+
+.record {
+  padding: 15px;
+  margin: 15px;
+  background-color: #1d3c91;
+  color: white;
+}

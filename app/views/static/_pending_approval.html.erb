@@ -1,0 +1,23 @@
+<% pending_approvals.each do |pending_approval| %>
+  <div class="col-md-4">
+    <div class="record">
+      <h4><%= pending_approval.user.full_name %></h4>
+      <p>
+        <span class="pending-details">Date Submitted</span>: <%= pending_approval.date.strftime('%m/%d/%Y') %>
+      </p>
+      <p>
+        <span class="pending-details">Rationale</span>: <%= truncate(pending_approval.rationale, length: 42) %>
+      </p>
+      
+      <div class="row">
+        <div class="col-md-6 column">
+          <%= link_to 'Approve', '#', class: 'btn btn-success btn-block' %>
+        </div>
+        
+        <div class="col-md-6 column">
+          <%= link_to 'Review', '#', class: 'btn btn-warning btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

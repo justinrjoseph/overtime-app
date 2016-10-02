@@ -28,7 +28,7 @@ AdminUser.create(
 puts "Two users, and one AdminUser created."
 
 100.times do |post|
-  Post.create!(date: Date.today, rationale: "Rationale for post #{post + 1}.", user: @user, overtime_request: 2.5)
+  Post.create!(date: Date.today, rationale: "Quas posuere, pulvinar ducimus? Itaque eleifend saepe dolor? Ullam, hendrerit. Pellentesque lorem, aute ad? Magnis congue pariatur phasellus corporis reprehenderit, gravida sunt harum dictum, quas impedit natus neque risus expedita! Rem sed cubilia eros. Elit orci cras itaque quas class.", user: @user, overtime_request: 2.5)
 end
 
 100.times do |audit_log|

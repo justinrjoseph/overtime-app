@@ -1,39 +1,7 @@
 <div class="container-fluid">
   <div class="pending-records row">
-    <div class="col-md-4">
-      <div class="record">
-        <p>asdf</p>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="record">
-        <p>asdf</p>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="record">
-        <p>asdf</p>
-      </div>
-    </div>
-  
-    <div class="col-md-4">
-      <div class="record">
-        <p>asdf</p>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="record">
-        <p>asdf</p>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="record">
-        <p>asdf</p>
-      </div>
-    </div>
+    <h2>Items Pending Approval</h2>
+    <hr>
+    <%= render partial: 'pending_approval', locals: { pending_approvals: @pending_approvals } %>
   </div>
 </div>

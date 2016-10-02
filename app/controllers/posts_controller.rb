@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :approve]
   
   def index
     @posts = Post.those_by(current_user).page(params[:page]).per(10)
@@ -42,6 +42,12 @@ class PostsController < ApplicationController
     else
       redirect_to posts_path, error: "There was a problem deleting #{@post.rationale}"
     end
+  end
+  
+  def approve
+    authorize @post
+    @post.approved!
+    redirect_to root_path, notice: "Request for #{@post.user.full_name} approved."
   end
   
   private

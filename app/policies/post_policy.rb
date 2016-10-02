@@ -7,6 +7,10 @@ class PostPolicy < ApplicationPolicy
     end
   end
   
+  def approve?
+    admin?
+  end
+  
   private
   
     def permitted_user?

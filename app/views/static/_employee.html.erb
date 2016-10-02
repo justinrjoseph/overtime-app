@@ -1,12 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="pending-records col-md-5 employee">
-      <h3>Pending Your Confirmation</h3>
-      <%= render partial: 'pending_audit_confirmation', locals: { pending_audit_confirmations: @pending_audit_confirmations } %>
-    </div>
+    <% unless @pending_audit_confirmations.empty? %>
+      <div class="pending-records col-md-5 employee">
+        <h3>Pending Your Confirmation</h3>
+        <%= render partial: 'pending_audit_confirmation', locals: { pending_audit_confirmations: @pending_audit_confirmations } %>
+      </div>
+    <% end %>
     
     <div class="pending-records col-md-5 employee">
-      asdf
+      <h3>Request Overtime</h3>
+      <%= link_to 'Request Overtime Approval', new_post_path, class: 'btn btn-primary btn-lg btn-block' %>
     </div>
   </div>
 </div>

@@ -19,8 +19,8 @@
 - x Update audit log end date when confirmed
 - x Update audit log status when overtime request rejected
 - x Update buttons on employee homepage (mobile-friendly, full timespan, sort order)
-- Remove 'Entries' for admins
-- Fix admin dashboard bug
+- x Remove 'Entries' for admins
+- x Fix admin dashboard bug
 - Implement Honeybadger error reporting
 - Implement new relic for keeping site alive
 - Check storing of hours

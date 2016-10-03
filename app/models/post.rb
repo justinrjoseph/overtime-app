@@ -8,12 +8,22 @@ class Post < ActiveRecord::Base
   
   scope :those_by, ->(user) { where(user_id: user.id) }
   
-  after_save :update_audit_log
+  after_save :confirm_audit_log, if: :submitted?
+  after_save :unconfirm_audit_log, if: :rejected?
   
   private
   
-    def update_audit_log
-      audit_log = AuditLog.where(user: self.user, start_date: (self.date - 7.days..self.date)).last
+    def confirm_audit_log
+      audit_log = find_audit_log
       audit_log.confirmed! if audit_log
+    end
+    
+    def unconfirm_audit_log
+      audit_log = find_audit_log
+      audit_log.pending! if audit_log
+    end
+    
+    def find_audit_log
+      return AuditLog.where(user: self.user, start_date: (self.date - 7.days..self.date)).last
     end
 end

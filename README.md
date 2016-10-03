@@ -16,6 +16,7 @@
 - x Email summary to managers for approval
 - x Needs to be documented if employee did not log overtime
 - Create audit log for each text message
+- Update audit log end date when confirmed
 
 ## UI:
 - x Bootstrap -> formatting

@@ -17,8 +17,8 @@
 - x Needs to be documented if employee did not log overtime
 - x Create audit log for each text message
 - x Update audit log end date when confirmed
-- Update audit log status when overtime request rejected
-- Update buttons on employee homepage (mobile-friendly, full timespan, sort order)
+- x Update audit log status when overtime request rejected
+- x Update buttons on employee homepage (mobile-friendly, full timespan, sort order)
 - Remove 'Entries' for admins
 - Fix admin dashboard bug
 - Implement Honeybadger error reporting

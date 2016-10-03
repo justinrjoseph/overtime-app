@@ -21,9 +21,7 @@
 - x Update buttons on employee homepage (mobile-friendly, full timespan, sort order)
 - x Remove 'Entries' for admins
 - x Fix admin dashboard bug
-- Implement Honeybadger error reporting
-- Implement new relic for keeping site alive
-- Check storing of hours
+- x Implement new relic for keeping site alive
 
 ## UI:
 - x Bootstrap -> formatting

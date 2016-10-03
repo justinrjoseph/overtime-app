@@ -3,7 +3,7 @@
     <div class="record">
       <h4><%= recent_audit_item.user.full_name %></h4>
       <p>
-        <span class="pending-details">Week Of</span>: <%= recent_audit_item.start_date.strftime('%m/%d/%Y') %>
+        <span class="pending-details">Week Of</span>: <%= format_date(recent_audit_item.start_date) %>
       </p>
       <p>
         <span class="pending-details">Confirmed On</span>: <%= recent_audit_item.end_date || status_label('PENDING') %>

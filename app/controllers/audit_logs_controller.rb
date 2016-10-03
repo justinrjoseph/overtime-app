@@ -8,6 +8,6 @@ class AuditLogsController < ApplicationController
     audit_log = AuditLog.find(params[:id])
     authorize audit_log
     audit_log.confirmed!
-    redirect_to root_path, notice: "You confirmed no overtime for week of #{audit_log.start_date.strftime('%m/%d/%Y')}."
+    redirect_to root_path, notice: "You confirmed no overtime for week of #{format_date(audit_log.start_date)}."
   end
 end

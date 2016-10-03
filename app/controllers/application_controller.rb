@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     ['AdminUser']  
   end
   
+  def format_date(date)
+    date.strftime('%m/%d/%Y')
+  end
+  
   private
   
     def user_not_authorized

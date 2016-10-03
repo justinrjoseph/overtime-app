@@ -1,7 +1,7 @@
 <tr>
   <td><%= audit_log.id %></td>
   <td><%= audit_log.user.full_name %></td>
-  <td><%= audit_log.start_date.strftime('%m/%d/%Y') %></td>
+  <td><%= format_date(audit_log.start_date) %></td>
   <td><%= audit_log.end_date %></td>
   <td><%= status_label(audit_log.status.upcase) %></td>
 </tr>

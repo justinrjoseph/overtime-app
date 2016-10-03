@@ -3,7 +3,7 @@
     <div class="record">
       <h4><%= pending_approval.user.full_name %></h4>
       <p>
-        <span class="pending-details">Date Submitted</span>: <%= pending_approval.date.strftime('%m/%d/%Y') %>
+        <span class="pending-details">Date Submitted</span>: <%= format_date(pending_approval.date) %>
       </p>
       <p>
         <span class="pending-details">Rationale</span>: <%= truncate(pending_approval.rationale, length: 42) %>

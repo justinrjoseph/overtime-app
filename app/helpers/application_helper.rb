@@ -19,6 +19,10 @@ module ApplicationHelper
     status_span_generator(status)
   end
   
+  def format_date(date)
+    date.strftime('%m/%d/%Y')
+  end
+  
   private
   
     def status_span_generator(status)

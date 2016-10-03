@@ -15,8 +15,14 @@
 - x Block non-admin and guest users
 - x Email summary to managers for approval
 - x Needs to be documented if employee did not log overtime
-- Create audit log for each text message
+- x Create audit log for each text message
 - Update audit log end date when confirmed
+- Update audit log status when overtime request rejected
+- Update buttons on employee homepage (mobile-friendly, full timespan, sort order)
+- Remove 'Entries' for admins
+- Fix admin dashboard bug
+- Implement Honeybadger error reporting
+- Implement new relic for keeping site alive
 
 ## UI:
 - x Bootstrap -> formatting
